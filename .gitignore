@@ -1,6 +1,16 @@
-# Default ignored files
-/.idea/shelf/
-/workspace.xml
-/build/
-.gradle
+HELP.md
+build/
+!**/src/main/**
+!**/src/test/**
+
+### Intelij IDEA ###
 .idea
+*.iws
+*.iml
+*.ipr
+
+### Gradle ###
+.gradle
+
+### Logs ###
+*.log
