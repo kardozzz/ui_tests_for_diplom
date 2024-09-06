@@ -39,7 +39,7 @@ public class TextBoxTests {
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#currentAddress").setValue(address);
         $(".custom-checkbox:nth-child(1) > .custom-control-label").click();
-        $("#uploadPicture").sendKeys(System.getProperty("user.dir") + "/src/test/images/avatar.jpg");
+        $("#uploadPicture").uploadFromClasspath("avatar.jpg");
         $("#state").click();
         $("#stateCity-wrapper").$(Selectors.byText("NCR")).click();
         $("#city").click();
