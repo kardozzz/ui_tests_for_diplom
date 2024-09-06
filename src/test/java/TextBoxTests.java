@@ -26,6 +26,7 @@ public class TextBoxTests {
         String state = "NCR";
         String city = "Delhi";
 
+        // Заполняем форму.
         open("/automation-practice-form");
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
@@ -45,6 +46,8 @@ public class TextBoxTests {
         $("#city").click();
         $("#stateCity-wrapper").$(Selectors.byText(city)).click();
         $("#submit").click();
+
+        // Проверяем что все заполнилось верно на всплывающем окне.
         $(".modal-content").shouldHave(Condition.text(firstName));
         $(".modal-content").shouldHave(Condition.text(lastName));
         $(".modal-content").shouldHave(Condition.text(userEmail));
@@ -58,6 +61,8 @@ public class TextBoxTests {
         $(".modal-content").shouldHave(Condition.text("Sports"));
         $(".modal-content").shouldHave(Condition.text("Maths"));
         $("#closeLargeModal").click();
+
+        // Отбивка что всё ок.
         System.out.println("Форма успешно заполнена, значения соответствуют введеным, окно закрыто.");
     }
 
