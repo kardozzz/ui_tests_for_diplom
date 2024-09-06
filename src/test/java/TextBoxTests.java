@@ -30,7 +30,7 @@ public class TextBoxTests {
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
-        $((".custom-radio:nth-child(1) > .custom-control-label")).click();
+        $("#genterWrapper").find(".custom-control-label").click();
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();  // Открыть календарь
         $(".react-datepicker__year-select").$("option[value='1991']").click();
@@ -39,15 +39,13 @@ public class TextBoxTests {
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#currentAddress").setValue(address);
         $(".custom-checkbox:nth-child(1) > .custom-control-label").click();
-        $("#uploadPicture").sendKeys("C:\\Users\\noob-master69\\Desktop\\avatar.jpg");
+        $("#uploadPicture").sendKeys(System.getProperty("user.dir") + "/src/test/images/avatar.jpg");
         $("#state").click();
         $("#stateCity-wrapper").$(Selectors.byText("NCR")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(Selectors.byText(city)).click();
         $("#submit").click();
-
         $(".modal-content").shouldHave(Condition.text(firstName));
-
         $(".modal-content").shouldHave(Condition.text(lastName));
         $(".modal-content").shouldHave(Condition.text(userEmail));
         $(".modal-content").shouldHave(Condition.text(userNumber));
