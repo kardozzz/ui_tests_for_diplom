@@ -2,6 +2,7 @@ import com.codeborne.selenide.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -22,10 +23,10 @@ public class findJunitCodeExampleTests {
     void findSoftAssertionsPage() {
         open("/selenide/selenide");
         $("#wiki-tab").click();
-        $(".markdown-body").shouldHave(Condition.text("Soft assertions"));
+        $(".markdown-body").shouldHave(text("Soft assertions"));
         $(byText("Soft assertions")).click();
         $("#user-content-3-using-junit5-extend-test-class").click();
-        $("#wiki-body").shouldHave(Condition.text("Using JUnit5 extend test class"));
+        $$(".markdown-body pre").find(Condition.text("@ExtendWith({SoftAssertsExtension.class})")).should(Condition.exist);
         System.out.println("Внутри есть пример кода для JUnit5.");
 
     }
