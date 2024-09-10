@@ -8,12 +8,11 @@ import static com.codeborne.selenide.Selenide.*;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.files.DownloadActions.click;
 
-public class findJunitCodeExampleTests {
+public class FindJunitCodeExampleTests {
 
     @BeforeAll
-    static void beforceAll() {
+    static void beforeAll() {
         Configuration.browserSize = "800x600";
         Configuration.baseUrl = "https://github.com";
         Configuration.pageLoadStrategy = "eager";
