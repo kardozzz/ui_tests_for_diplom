@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class TextBoxTests {
 
     @BeforeAll
-    static void Beforceall() {
+    static void beforceAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
@@ -26,8 +26,11 @@ public class TextBoxTests {
         String state = "NCR";
         String city = "Delhi";
 
+
         // Заполняем форму.
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()"); // deleted banner
+        executeJavaScript("$('footer').remove()"); // deleted footer
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
