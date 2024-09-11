@@ -22,7 +22,7 @@ public class FindJunitCodeExampleTests {
         $(".markdown-body").shouldHave(text("Soft assertions"));
         $(byText("Soft assertions")).click();
         $("#user-content-3-using-junit5-extend-test-class").click();
-        $("#wiki-body").shouldHave(text("""
+        $("#wiki-content").shouldHave(text("""
                 @ExtendWith({SoftAssertsExtension.class})
                 class Tests {
                   @Test
@@ -35,7 +35,7 @@ public class FindJunitCodeExampleTests {
                   }
                 }
                 """));
-        System.out.println("Внутри есть пример кода для JUnit5.");
+        System.out.println("Пример кода для JUnit5.");
 
     }
 }
