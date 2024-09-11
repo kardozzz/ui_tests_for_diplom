@@ -1,11 +1,8 @@
 import com.codeborne.selenide.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -19,13 +16,25 @@ public class FindJunitCodeExampleTests {
     }
 
     @Test
-    void findSoftAssertionsPage() {
+    void findSoftAssertionsPageTest() {
         open("/selenide/selenide");
         $("#wiki-tab").click();
         $(".markdown-body").shouldHave(text("Soft assertions"));
         $(byText("Soft assertions")).click();
         $("#user-content-3-using-junit5-extend-test-class").click();
-        $$(".markdown-body pre").find(Condition.text("@ExtendWith({SoftAssertsExtension.class})")).should(Condition.exist);
+        $("#wiki-body").shouldHave(text("""
+                @ExtendWith({SoftAssertsExtension.class})
+                class Tests {
+                  @Test
+                  void test() {
+                    Configuration.assertionMode = SOFT;
+                    open("page.html");
+                             
+                    $("#first").should(visible).click();
+                    $("#second").should(visible).click();
+                  }
+                }
+                """));
         System.out.println("Внутри есть пример кода для JUnit5.");
 
     }
