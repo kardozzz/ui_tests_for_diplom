@@ -15,7 +15,7 @@ public class SearchAiPowerePlatformTests {
     }
 
     @Test
-    void GotoAiPoweredPlatformPageTest() {
+    void gotoAiPoweredPlatformPageTest() {
         open("");
         $$(".HeaderMenu-link").findBy(text("Solutions")).hover();
         $$(".HeaderMenu-dropdown a").findBy(text("Enterprise")).click();
