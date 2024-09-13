@@ -1,9 +1,9 @@
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.DragAndDropOptions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.DragAndDropOptions.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MoveBoxTests {
@@ -24,7 +24,7 @@ public class MoveBoxTests {
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
         System.out.println("Квадраты поменялись местами.");
-        $("#column-b").dragAndDrop(DragAndDropOptions.to("#column-a"));
+        $("#column-b").dragAndDrop(to("#column-a"));
         $("#column-a").shouldHave(text("A"));
         $("#column-b").shouldHave(text("B"));
         System.out.println("Квадраты поменялись обратно.");
