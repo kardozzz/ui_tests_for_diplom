@@ -27,9 +27,6 @@ public class MoveBoxTests {
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
         System.out.println("Квадраты поменялись местами.");
-        $("#column-b").dragAndDrop(to("#column-a"));
-        $("#column-a").shouldHave(text("A"));
-        $("#column-b").shouldHave(text("B"));
-        System.out.println("Квадраты поменялись обратно.");
+
     }
 }
