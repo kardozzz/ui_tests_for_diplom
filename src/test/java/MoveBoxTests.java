@@ -16,6 +16,9 @@ public class MoveBoxTests {
     @Test
     void dragAndDropTests() {
         open("/drag_and_drop");
+        $("#column-a").shouldHave(text("A"));
+        $("#column-b").shouldHave(text("B"));
+        System.out.println("Квадраты на своих местах.");
         actions().clickAndHold($("#column-a"))
                 .moveToElement($("#column-b"))
                 .release()
