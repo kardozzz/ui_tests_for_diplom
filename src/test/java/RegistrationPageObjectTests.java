@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
 
-public class TextBoxTests extends TestBase {
+public class RegistrationPageObjectTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     String firstName = "John";
     String lastName = "Krutoy";
@@ -58,8 +58,9 @@ public class TextBoxTests extends TestBase {
         // Отбивка что всё ок.
         System.out.println("Форма успешно заполнена, значения соответствуют введеным, окно закрыто.");
     }
+
     @Test
-    void fillRequiredFormTests(){
+    void fillRequiredFormTests() {
         registrationPage.pageOpen()
                 .removeBanner()
                 .setFirstName(firstName)
@@ -71,14 +72,14 @@ public class TextBoxTests extends TestBase {
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", userNumber);
     }
+
     @Test
-    void notFillFormNegativeTests(){
+    void notFillFormNegativeTests() {
         registrationPage.pageOpen()
                 .removeBanner()
                 .clickSubmit();
         registrationPage.checkNegativeResult();
     }
-
 
 
 }
