@@ -16,10 +16,9 @@ public class RegistrationPageObjectTests extends TestBase {
     String hobbies = "Sports";
     String picture = "avatar.jpg";
     String dayOfBirth = "13";
-    String monthOfBirth = "9";
+    String monthOfBirth = "July";
     String yearOfBirth = "1991";
 
-    String monthName = getMonthName(Integer.parseInt(monthOfBirth));
 
 
     @Test
@@ -48,7 +47,7 @@ public class RegistrationPageObjectTests extends TestBase {
                 .checkResult("Student Email", userEmail)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", dayOfBirth + " " + monthName + "," + yearOfBirth)
+                .checkResult("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
                 .checkResult("Subjects", subject)
                 .checkResult("Hobbies", hobbies)
                 .checkResult("Picture", picture)
