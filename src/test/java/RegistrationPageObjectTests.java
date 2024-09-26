@@ -1,23 +1,24 @@
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import utils.RandomUtils;
 
 
 public class RegistrationPageObjectTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
-    String firstName = "John";
-    String lastName = "Krutoy";
-    String userEmail = "krutoy@gmail.com";
-    String gender = "Male";
-    String userNumber = "8911222333";
-    String address = "123 Main St, Springfield";
-    String state = "NCR";
-    String city = "Delhi";
-    String subject = "Math";
-    String hobbies = "Sports";
-    String picture = "avatar.jpg";
-    String dayOfBirth = "13";
-    String monthOfBirth = "July";
-    String yearOfBirth = "1991";
+    String firstName = RandomUtils.getRandomFirstName();
+    String lastName = RandomUtils.getRandomLastName();
+    String userEmail = RandomUtils.getRandomEmail();
+    String gender = RandomUtils.getRandomGender();
+    String userNumber = RandomUtils.getRandomPhoneNumber();
+    String address = RandomUtils.getRandomAddress();
+    String state = RandomUtils.getRandomState();
+    String city = RandomUtils.getRandomCity();
+    String subject = RandomUtils.getRandomSubject();
+    String hobbies = RandomUtils.getRandomHobbies();
+    String picture = RandomUtils.getRandomPicture();
+    String dayOfBirth = RandomUtils.getRandomDayOfBirth();
+    String monthOfBirth = RandomUtils.getRandomMonthOfBirth();
+    String yearOfBirth = RandomUtils.getRandomYearOfBirth();
 
 
 
@@ -37,8 +38,8 @@ public class RegistrationPageObjectTests extends TestBase {
                 .setCurrentAddress(address)
                 .setHobbies(hobbies)
                 .uploadPicture(picture)
-                .removeBanner()
                 .setState(state)
+                .removeBanner()
                 .setCity(city)
                 .clickSubmit();
 
