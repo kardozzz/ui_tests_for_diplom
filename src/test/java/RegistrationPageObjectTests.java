@@ -27,6 +27,7 @@ public class RegistrationPageObjectTests extends TestBase {
 
         // Заполняем форму.
         registrationPage.pageOpen()
+                .removeBanner()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setEmail(userEmail)
@@ -37,7 +38,6 @@ public class RegistrationPageObjectTests extends TestBase {
                 .setCurrentAddress(address)
                 .setHobbies(hobbies)
                 .uploadPicture(picture)
-                .removeBanner()
                 .setState(state)
                 .setCity(city)
                 .clickSubmit();
