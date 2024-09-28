@@ -12,14 +12,13 @@ public class RegistrationPageObjectTests extends TestBase {
     String userNumber = RandomUtils.getRandomPhoneNumber();
     String address = RandomUtils.getRandomAddress();
     String state = RandomUtils.getRandomState();
-    String city = RandomUtils.getRandomCity();
+    String city = RandomUtils.getRandomCity(state);
     String subject = RandomUtils.getRandomSubject();
     String hobbies = RandomUtils.getRandomHobbies();
     String picture = RandomUtils.getRandomPicture();
     String dayOfBirth = RandomUtils.getRandomDayOfBirth();
     String monthOfBirth = RandomUtils.getRandomMonthOfBirth();
     String yearOfBirth = RandomUtils.getRandomYearOfBirth();
-
 
 
     @Test
@@ -38,8 +37,8 @@ public class RegistrationPageObjectTests extends TestBase {
                 .setCurrentAddress(address)
                 .setHobbies(hobbies)
                 .uploadPicture(picture)
-                .setState(state)
                 .removeBanner()
+                .setState(state)
                 .setCity(city)
                 .clickSubmit();
 
