@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
@@ -20,7 +21,7 @@ public class RegistrationPageObjectTests extends TestBase {
     String monthOfBirth = RandomUtils.getRandomMonthOfBirth();
     String yearOfBirth = RandomUtils.getRandomYearOfBirth();
 
-
+    @Tag("demoqa")
     @Test
     void fillFullFormTests() {
 
@@ -57,7 +58,7 @@ public class RegistrationPageObjectTests extends TestBase {
         // Отбивка что всё ок.
         System.out.println("Форма успешно заполнена, значения соответствуют введеным, окно закрыто.");
     }
-
+    @Tag("demoqa")
     @Test
     void fillRequiredFormTests() {
         registrationPage.pageOpen()
@@ -71,7 +72,7 @@ public class RegistrationPageObjectTests extends TestBase {
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", userNumber);
     }
-
+    @Tag("demoqa")
     @Test
     void notFillFormNegativeTests() {
         registrationPage.pageOpen()
