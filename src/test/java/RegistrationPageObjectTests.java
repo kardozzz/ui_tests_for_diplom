@@ -29,9 +29,6 @@ public class RegistrationPageObjectTests extends TestBase {
 
 
         // Заполняем форму.
-        step("Открываем страницу регистрации", () -> {
-
-        });
         step("Заполняем форму", () -> {
             registrationPage.pageOpen()
                     .setFirstName(firstName)
