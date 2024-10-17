@@ -8,10 +8,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+
 
 public class TestBase {
     @BeforeAll
-    static void beforceAll() throws MalformedURLException {
+    static void setUp() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
@@ -28,11 +30,12 @@ public class TestBase {
 
     }
     @AfterEach
-    void addAttachments(){
+    void addAttachments() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+        closeWebDriver();
     }
 
 }
