@@ -26,7 +26,7 @@ public class TestBase {
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         ChromeOptions options = new ChromeOptions();
-        options.setCapability("browserVersion", "113.0");
+        options.setCapability("browserVersion", "100.0");
         options.setCapability("selenoid:options", new HashMap<String, Object>() {{
             /* How to add test badge */
             put("name", "Test badge...");
