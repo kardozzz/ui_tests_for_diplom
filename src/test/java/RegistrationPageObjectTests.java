@@ -29,65 +29,65 @@ public class RegistrationPageObjectTests extends TestBase {
 
 
         // Заполняем форму.
-       step("Открываем страницу регистрации", () -> {
-           registrationPage.pageOpen();
-       });
-        step("Заполняем форму",() -> {
-                    registrationPage.setFirstName(firstName)
-                            .setLastName(lastName)
-                            .setEmail(userEmail)
-                            .setGenderWrapper(gender)
-                            .setUserNumber(userNumber)
-                            .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
-                            .setSubject(subject)
-                            .setCurrentAddress(address)
-                            .removeBanner()
-                            .setHobbies(hobbies)
-                            .removeBanner()
-                            .uploadPicture(picture)
-                            .setState(state)
-                            .setCity(city)
-                            .clickSubmit();
-                });
+        step("Открываем страницу регистрации", () -> {
+
+        });
+        step("Заполняем форму", () -> {
+            registrationPage.pageOpen()
+                    .setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setEmail(userEmail)
+                    .setGenderWrapper(gender)
+                    .setUserNumber(userNumber)
+                    .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
+                    .setSubject(subject)
+                    .setCurrentAddress(address)
+                    .removeBanner()
+                    .setHobbies(hobbies)
+                    .removeBanner()
+                    .uploadPicture(picture)
+                    .setState(state)
+                    .setCity(city)
+                    .clickSubmit();
+        });
 
         step("Проверяем что все заполнилось верно на всплывающем окне.", () -> {
-                    registrationPage.checkResult("Student Name", firstName + " " + lastName)
-                            .checkResult("Student Email", userEmail)
-                            .checkResult("Gender", gender)
-                            .checkResult("Mobile", userNumber)
-                            .checkResult("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
-                            .checkResult("Subjects", subject)
-                            .checkResult("Hobbies", hobbies)
-                            .checkResult("Picture", picture)
-                            .checkResult("Address", address)
-                            .checkResult("State and City", state + " " + city);
-                });
+            registrationPage.checkResult("Student Name", firstName + " " + lastName)
+                    .checkResult("Student Email", userEmail)
+                    .checkResult("Gender", gender)
+                    .checkResult("Mobile", userNumber)
+                    .checkResult("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
+                    .checkResult("Subjects", subject)
+                    .checkResult("Hobbies", hobbies)
+                    .checkResult("Picture", picture)
+                    .checkResult("Address", address)
+                    .checkResult("State and City", state + " " + city);
+        });
 
         // Отбивка что всё ок.
-        step("Отбивка что всё ок.", () -> {
-            System.out.println("Форма успешно заполнена, значения соответствуют введеным, окно закрыто.");
-        });
+        System.out.println("Форма успешно заполнена, значения соответствуют введеным, окно закрыто.");
+
     }
+
     @Tag("demoqa")
     @Test
     void fillRequiredFormTests() {
-        step("Открываем главную страницу.", () -> {
-            registrationPage.pageOpen();
-                });
-        step("Заполняем форму c "+ firstName + lastName + gender + userNumber,() -> {
-                    registrationPage.setFirstName(firstName)
-                            .setLastName(lastName)
-                            .setGenderWrapper(gender)
-                            .setUserNumber(userNumber)
-                            .removeBanner()
-                            .clickSubmit();
-                });
-        step("Проверяем что все заполнилось верно на всплывающем окне.", () ->{
+        step("Заполняем форму c ", () -> {
+            registrationPage.pageOpen()
+                    .setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setGenderWrapper(gender)
+                    .setUserNumber(userNumber)
+                    .removeBanner()
+                    .clickSubmit();
+        });
+        step("Проверяем что все заполнилось верно на всплывающем окне.", () -> {
             registrationPage.checkResult("Student Name", firstName + " " + lastName)
                     .checkResult("Gender", gender)
                     .checkResult("Mobile", userNumber);
         });
     }
+
     @Tag("demoqa")
     @Test
     void notFillFormNegativeTests() {
