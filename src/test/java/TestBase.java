@@ -23,8 +23,5 @@ public class TestBase {
         Attach.browserConsoleLogs();
         Attach.addVideo();
     }
-    void closeDriver() {
-        WebDriverRunner.closeWindow();
-    }
 
 }
