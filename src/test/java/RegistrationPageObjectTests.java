@@ -39,6 +39,7 @@ public class RegistrationPageObjectTests extends TestBase {
                 .setCurrentAddress(address)
                 .removeBanner()
                 .setHobbies(hobbies)
+                .removeBanner()
                 .uploadPicture(picture)
                 .setState(state)
                 .setCity(city)
