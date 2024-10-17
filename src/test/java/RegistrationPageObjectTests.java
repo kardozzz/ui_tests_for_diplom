@@ -39,6 +39,7 @@ public class RegistrationPageObjectTests extends TestBase {
                     .setEmail(userEmail)
                     .setGenderWrapper(gender)
                     .setUserNumber(userNumber)
+                    .removeBanner()
                     .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
                     .setSubject(subject)
                     .setCurrentAddress(address)
