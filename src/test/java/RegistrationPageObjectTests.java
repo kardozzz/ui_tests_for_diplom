@@ -28,7 +28,7 @@ public class RegistrationPageObjectTests extends TestBase {
 
         // Заполняем форму.
         registrationPage.pageOpen()
-                .removeBanner()
+
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setEmail(userEmail)
@@ -37,6 +37,7 @@ public class RegistrationPageObjectTests extends TestBase {
                 .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
                 .setSubject(subject)
                 .setCurrentAddress(address)
+                .removeBanner()
                 .setHobbies(hobbies)
                 .uploadPicture(picture)
                 .setState(state)
@@ -62,11 +63,12 @@ public class RegistrationPageObjectTests extends TestBase {
     @Test
     void fillRequiredFormTests() {
         registrationPage.pageOpen()
-                .removeBanner()
+
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setGenderWrapper(gender)
                 .setUserNumber(userNumber)
+                .removeBanner()
                 .clickSubmit();
         registrationPage.checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Gender", gender)
