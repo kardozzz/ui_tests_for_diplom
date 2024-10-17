@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
 
+import static io.qameta.allure.Allure.step;
+
 
 public class RegistrationPageObjectTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
@@ -27,53 +29,64 @@ public class RegistrationPageObjectTests extends TestBase {
 
 
         // Заполняем форму.
-        registrationPage.pageOpen()
+       step("Открываем страницу регистрации", () -> {
+           registrationPage.pageOpen();
+       });
+        step("Заполняем форму",() -> {
+                    registrationPage.setFirstName(firstName)
+                            .setLastName(lastName)
+                            .setEmail(userEmail)
+                            .setGenderWrapper(gender)
+                            .setUserNumber(userNumber)
+                            .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
+                            .setSubject(subject)
+                            .setCurrentAddress(address)
+                            .removeBanner()
+                            .setHobbies(hobbies)
+                            .removeBanner()
+                            .uploadPicture(picture)
+                            .setState(state)
+                            .setCity(city)
+                            .clickSubmit();
+                });
 
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .setGenderWrapper(gender)
-                .setUserNumber(userNumber)
-                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
-                .setSubject(subject)
-                .setCurrentAddress(address)
-                .removeBanner()
-                .setHobbies(hobbies)
-                .removeBanner()
-                .uploadPicture(picture)
-                .setState(state)
-                .setCity(city)
-                .clickSubmit();
-
-        // Проверяем что все заполнилось верно на всплывающем окне.
-        registrationPage.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Student Email", userEmail)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
-                .checkResult("Subjects", subject)
-                .checkResult("Hobbies", hobbies)
-                .checkResult("Picture", picture)
-                .checkResult("Address", address)
-                .checkResult("State and City", state + " " + city);
+        step("Проверяем что все заполнилось верно на всплывающем окне.", () -> {
+                    registrationPage.checkResult("Student Name", firstName + " " + lastName)
+                            .checkResult("Student Email", userEmail)
+                            .checkResult("Gender", gender)
+                            .checkResult("Mobile", userNumber)
+                            .checkResult("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
+                            .checkResult("Subjects", subject)
+                            .checkResult("Hobbies", hobbies)
+                            .checkResult("Picture", picture)
+                            .checkResult("Address", address)
+                            .checkResult("State and City", state + " " + city);
+                });
 
         // Отбивка что всё ок.
-        System.out.println("Форма успешно заполнена, значения соответствуют введеным, окно закрыто.");
+        step("Отбивка что всё ок.", () -> {
+            System.out.println("Форма успешно заполнена, значения соответствуют введеным, окно закрыто.");
+        });
     }
     @Tag("demoqa")
     @Test
     void fillRequiredFormTests() {
-        registrationPage.pageOpen()
-
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGenderWrapper(gender)
-                .setUserNumber(userNumber)
-                .removeBanner()
-                .clickSubmit();
-        registrationPage.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", userNumber);
+        step("Открываем главную страницу.", () -> {
+            registrationPage.pageOpen();
+                });
+        step("Заполняем форму c "+ firstName + lastName + gender + userNumber,() -> {
+                    registrationPage.setFirstName(firstName)
+                            .setLastName(lastName)
+                            .setGenderWrapper(gender)
+                            .setUserNumber(userNumber)
+                            .removeBanner()
+                            .clickSubmit();
+                });
+        step("Проверяем что все заполнилось верно на всплывающем окне.", () ->{
+            registrationPage.checkResult("Student Name", firstName + " " + lastName)
+                    .checkResult("Gender", gender)
+                    .checkResult("Mobile", userNumber);
+        });
     }
     @Tag("demoqa")
     @Test
