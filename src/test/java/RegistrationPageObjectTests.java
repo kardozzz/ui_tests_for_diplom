@@ -46,6 +46,7 @@ public class RegistrationPageObjectTests extends TestBase {
                     .uploadPicture(picture)
                     .setState(state)
                     .setCity(city)
+                    .removeBanner()
                     .clickSubmit();
         });
 
