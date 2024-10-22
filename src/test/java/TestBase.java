@@ -15,7 +15,7 @@ public class TestBase {
     @BeforeAll
     static void setUp() {
         Configuration.browserSize = System.getProperty("browserSize");
-        Configuration.baseUrl = System.getProperty("remoteUrl");
+        Configuration.baseUrl = System.getProperty("howTestingUrl");
         Configuration.browser = System.getProperty("browserName");
         Configuration.browserVersion = System.getProperty("browserVersion");
         Configuration.pageLoadStrategy = "eager";
