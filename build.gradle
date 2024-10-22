@@ -39,5 +39,6 @@ task demoqa_test (type: Test){
 }
 
 test {
+    systemProperty 'idea.active', 'true'
     useJUnitPlatform()
 }
