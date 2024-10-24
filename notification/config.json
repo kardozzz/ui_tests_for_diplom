@@ -1,0 +1,17 @@
+{
+  "base": {
+    "logo": "",
+    "environment": "selenoid.autotests.cloud",
+    "project": "demoqa-tests-30",
+    "comment": "@kard0zzz, test passed!",
+    "reportLink": "https://jenkins.autotests.cloud/job/student_alabzin_firsAutotests_in_jenkins/51/",
+    "language": "en",
+    "allureFolder": "allure-report",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "8116990376:AAHh_4qLy4YoL0bgJGv_P2SvRnHH6xdoHU4",
+    "chat": "-1002461706566",
+    "replyTo": ""
+  }
+}
