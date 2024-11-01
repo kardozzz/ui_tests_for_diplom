@@ -43,6 +43,24 @@
 Для запуска тестов необходимо нажать на кнопку "Build with Parameters". Появится прогресс бар с номером сборки тестов.
 
 ---
+## Команды для запуска из терминала
+___
+***Локальный запуск:***
+```bash  
+gradle clean runing_test
+```
+
+***Удалённый запуск через Jenkins:***
+```bash  
+clean runing_test
+"-DbrowserSize=${BROWSER_SIZE}"
+"-DbrowserName=${BROWSER_NAME}"
+"-DbrowserVersion=${BROWSER_VERSION}"
+"-Dremote=${REMOTE_URL}"
+"-Dlogin=${REMOTE_LOGIN}"
+"-DremoteVideoURL=${REMOTE_VIDEO_URL}"
+```
+---
 
 <a id="allure"></a>
 ## <a name="Отчет в Allure">**Отчет в Allure**</a>
