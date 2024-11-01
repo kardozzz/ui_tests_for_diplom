@@ -4,17 +4,16 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.clickable;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class JobMtsMainPage {
     final SelenideElement buttonVacancy = $(".h-button__text"),
-            linkWorkInIt = $("[.header__menu-item-inner] [a href=/vacancies/moscow/rabota-v-it]"),
-            linkAllVacancies = $(".header__menu-item-inner").shouldHave(Condition.text("Все вакансии")),
-            linkProgram = $("[.header__menu-item-inner] [a href=/programs]"),
-            buttonSearch = $("[.h-button] [href=/vacancies");
-//            scrollToSearchResult = $(".h-button.h-button--lg"),
+            linkWorkInIt = $$(".header__menu-item").findBy(Condition.text("Работа в IT")),
+            linkAllVacancies = $$(".header__menu-item").findBy(Condition.text("Все вакансии")),
+            linkProgram = $$(".header__menu-item").findBy(Condition.text("Стажировки")),
+            buttonSearch = $$(".h-button").find(Condition.text("Найти")),
+            selectHabrLink = $$(".swiper-wrapper").find(Condition.text("Пишем статьи о разработке")),
+            scrollToSearchResult = $(".social-slider__item-text");
 //            useSwiper = $(".social-slider__item-title"),
 //            checkSelectVacancy = $(".row title-row");
 
@@ -46,6 +45,16 @@ public class JobMtsMainPage {
 
     public JobMtsMainPage checkButtonSearch() {
         buttonSearch.shouldBe(clickable);
+        return this;
+    }
+
+    public JobMtsMainPage checkSelectHabr() {
+        selectHabrLink.shouldBe(clickable);
+        return this;
+    }
+
+    public JobMtsMainPage scrollToResultSearch() {
+        scrollToSearchResult.scrollTo();
         return this;
     }
 
