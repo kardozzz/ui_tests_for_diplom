@@ -2,9 +2,9 @@
   "base": {
     "logo": "",
     "environment": "selenoid.autotests.cloud",
-    "project": "demoqa-tests-30",
+    "project": "student_alabzin_testOps_in_jenkins",
     "comment": "@kard0zzz, test passed!",
-    "reportLink": "https://jenkins.autotests.cloud/job/student_alabzin_firsAutotests_in_jenkins/51/",
+    "reportLink": "https://jenkins.autotests.cloud/job/student_alabzin_testOps_in_jenkins/2/",
     "language": "en",
     "allureFolder": "allure-report",
     "enableChart": true

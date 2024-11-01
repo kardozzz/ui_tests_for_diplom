@@ -1,5 +1,6 @@
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.JobMtsMainPage;
 
@@ -8,7 +9,7 @@ import static io.qameta.allure.Allure.step;
 
 public class JobMtsTests extends TestBase {
     JobMtsMainPage jobMtsMainPage = new JobMtsMainPage();
-
+    @Tag("Smoke")
     @DisplayName("Проверяем кликабельность кнопки Стажировки")
     @Test
     void programTest() {
@@ -19,7 +20,7 @@ public class JobMtsTests extends TestBase {
             jobMtsMainPage.checkButtonProgram();
         });
     }
-
+    @Tag("Smoke")
     @DisplayName("Проверяем кликабельность кнопки Все вакансии")
     @Test
     void vacancyTest() {
@@ -31,7 +32,7 @@ public class JobMtsTests extends TestBase {
 
         });
     }
-
+    @Tag("Smoke")
     @DisplayName("Проверяем кликабельность кнопки Работа в IT")
     @Test
     void workInItTest() {
@@ -43,7 +44,7 @@ public class JobMtsTests extends TestBase {
 
         });
     }
-
+    @Tag("Smoke")
     @DisplayName("Проверяем кликабельность кнопки Найти")
     @Test
     void searchButtonTest() {
@@ -55,7 +56,7 @@ public class JobMtsTests extends TestBase {
 
         });
     }
-
+    @Tag("Smoke")
     @DisplayName("Проверяем кликабельность ссылки на Habr в карусели")
     @Test
     void habrLinkTest() {
