@@ -14,8 +14,6 @@ public class JobMtsMainPage {
             buttonSearch = $$(".h-button").find(Condition.text("Найти")),
             selectHabrLink = $$(".swiper-wrapper").find(Condition.text("Пишем статьи о разработке")),
             scrollToSearchResult = $(".social-slider__item-text");
-//            useSwiper = $(".social-slider__item-title"),
-//            checkSelectVacancy = $(".row title-row");
 
 
     public JobMtsMainPage pageOpen() {
