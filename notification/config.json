@@ -2,7 +2,7 @@
   "base": {
     "logo": "",
     "environment": "selenoid.autotests.cloud",
-    "project": "student_alabzin_testOps_in_jenkins",
+    "project": "testOps_Tests",
     "comment": "@kard0zzz, test passed!",
     "reportLink": "https://jenkins.autotests.cloud/job/student_alabzin_testOps_in_jenkins/2/",
     "language": "en",
