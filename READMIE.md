@@ -38,7 +38,7 @@
 
 Тесты запускаются через [Jenkins](https://jenkins.autotests.cloud/job/student_alabzin_testOps_in_jenkins/)
 
-<img src="image/Jenkins.png" width="900">
+<img src="images/jenkins.png" width="900">
 
 Для запуска тестов необходимо нажать на кнопку "Build with Parameters". Появится прогресс бар с номером сборки тестов.
 
@@ -58,7 +58,7 @@
 
 При нажатии на определенный тест, раскрываются шаги теста с приложенными вложениями
 
-<img src="images/Allure2.png" width="900">
+<img src="images/allure2.png" width="900">
 
 ---
 
