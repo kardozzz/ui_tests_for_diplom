@@ -33,10 +33,10 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 
 }
-task demoqa_test (type: Test){
+task runing_test (type: Test){
     useJUnitPlatform{
         systemProperties(System.getProperties())
-        includeTags("demoqa")
+        includeTags("Smoke")
     }
 }
 
