@@ -94,5 +94,5 @@ clean runing_test
 ## <a name="Видео прохождения тестов">**Видео прохождения тестов**</a>
 
 <p align="center">
-<img title="Selenoid Video" src="images/video/uptrade.gif" width="550" height="350"  alt="video">   
+<img title="Selenoid Video" src="images/runtest.gif" width="550" height="350"  alt="video">   
 </p>
