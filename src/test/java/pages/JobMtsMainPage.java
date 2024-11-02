@@ -21,10 +21,6 @@ public class JobMtsMainPage {
         return this;
     }
 
-    public JobMtsMainPage checkButtonVacancy() {
-        buttonVacancy.shouldBe(clickable);
-        return this;
-    }
 
     public JobMtsMainPage checkButtonWorkInIt() {
         linkWorkInIt.shouldBe(clickable);
@@ -56,16 +52,4 @@ public class JobMtsMainPage {
         return this;
     }
 
-//    public clickHabrSwiper(){
-//        useSwiper.shouldHave(text("Хабр")).click();
-//        return this;
-//    }
-//    public clickTgSwiper(){
-//        useSwiper.shouldHave(text("Это МТС")).click();
-//        return this;
-//    }
-//    public clickVcSwiper(){
-//        useSwiper.shouldHave(text("VC")).click();
-//        return this;
-//    }
 }
