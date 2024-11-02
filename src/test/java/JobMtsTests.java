@@ -6,7 +6,7 @@ import pages.JobMtsMainPage;
 
 import static io.qameta.allure.Allure.step;
 
-
+@Tag("Smoke")
 public class JobMtsTests extends TestBase {
     JobMtsMainPage jobMtsMainPage = new JobMtsMainPage();
     @Tag("Smoke")
@@ -20,7 +20,6 @@ public class JobMtsTests extends TestBase {
             jobMtsMainPage.checkButtonProgram();
         });
     }
-    @Tag("Smoke")
     @DisplayName("Проверяем кликабельность кнопки Все вакансии")
     @Test
     void vacancyTest() {
@@ -32,7 +31,7 @@ public class JobMtsTests extends TestBase {
 
         });
     }
-    @Tag("Smoke")
+
     @DisplayName("Проверяем кликабельность кнопки Работа в IT")
     @Test
     void workInItTest() {
@@ -44,7 +43,6 @@ public class JobMtsTests extends TestBase {
 
         });
     }
-    @Tag("Smoke")
     @DisplayName("Проверяем кликабельность кнопки Найти")
     @Test
     void searchButtonTest() {
@@ -56,7 +54,6 @@ public class JobMtsTests extends TestBase {
 
         });
     }
-    @Tag("Smoke")
     @DisplayName("Проверяем кликабельность ссылки на Habr в карусели")
     @Test
     void habrLinkTest() {
