@@ -10,6 +10,7 @@ public class JobMtsMainPage {
     final SelenideElement buttonVacancy = $(".h-button__text"),
             linkWorkInIt = $$(".header__menu-item").findBy(Condition.text("Работа в IT")),
             linkAllVacancies = $$(".header__menu-item").findBy(Condition.text("Все вакансии")),
+            clickAllVacancies = $$(".header__menu-item").findBy(Condition.text("Все вакансии")),
             linkProgram = $$(".header__menu-item").findBy(Condition.text("Стажировки")),
             buttonSearch = $$(".h-button").find(Condition.text("Найти")),
             selectHabrLink = $$(".swiper-wrapper").find(Condition.text("Пишем статьи о разработке")),
@@ -36,6 +37,10 @@ public class JobMtsMainPage {
         linkAllVacancies.shouldBe(clickable);
         return this;
     }
+    public JobMtsMainPage clickButtonAllVacancy() {
+        clickAllVacancies.click();
+        return this;
+    }
 
     public JobMtsMainPage checkButtonSearch() {
         buttonSearch.shouldBe(clickable);
@@ -51,5 +56,6 @@ public class JobMtsMainPage {
         scrollToSearchResult.scrollTo();
         return this;
     }
+
 
 }

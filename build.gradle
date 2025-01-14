@@ -25,7 +25,8 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:5.11.0",
             'com.github.javafaker:javafaker:1.0.2',
             "org.slf4j:slf4j-simple:2.0.16",
-            'io.qameta.allure:allure-selenide:2.29.0')
+            'io.qameta.allure:allure-selenide:2.29.0',
+            'org.aeonbits.owner:owner:1.0.12')
 }
 
 
@@ -33,10 +34,10 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 
 }
-task runing_test (type: Test){
+task mtsjob_test (type: Test){
     useJUnitPlatform{
         systemProperties(System.getProperties())
-        includeTags("Smoke")
+        includeTags("Smokes")
     }
 }
 

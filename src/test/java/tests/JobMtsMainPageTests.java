@@ -1,3 +1,4 @@
+package tests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -7,7 +8,7 @@ import pages.JobMtsMainPage;
 import static io.qameta.allure.Allure.step;
 
 @Tag("Smoke")
-public class JobMtsTests extends TestBase {
+public class JobMtsMainPageTests extends TestBase {
     JobMtsMainPage jobMtsMainPage = new JobMtsMainPage();
     @Tag("Smoke")
     @DisplayName("Проверяем кликабельность кнопки Стажировки")
