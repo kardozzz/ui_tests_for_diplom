@@ -25,6 +25,7 @@ public class JobMtsResponseVacancyTest extends TestBase {
     String coverLetter = RandomUtils.getRandomCoverLetter();
 
     @Test
+    @DisplayName("Заполняем все поля формы отклика")
     void fillRespondFormAllRow() {
         step("Открываем главную страницу", () -> {
             jobMtsMainPage.pageOpen();
