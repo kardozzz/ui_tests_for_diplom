@@ -27,7 +27,6 @@ public class TestBase {
         Configuration.baseUrl = webConfig.getBaseUrl();
         Configuration.pageLoadStrategy = "eager";
         Configuration.remote = webConfig.getRemoteUrl();
-        Configuration.holdBrowserOpen = true;
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
