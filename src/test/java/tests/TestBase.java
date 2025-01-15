@@ -37,10 +37,12 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
     }
+
     @BeforeEach
     void doBeforeEach() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
+
     @AfterEach
     void addAttachments() {
         Attach.screenshotAs("Last screenshot");

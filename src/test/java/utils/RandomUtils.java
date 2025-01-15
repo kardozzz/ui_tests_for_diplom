@@ -22,7 +22,7 @@ public class RandomUtils {
     }
 
     public static String getRandomResumeFormatFile() {
-        return faker.options().option("resume.doc", "resume.docx", "resume.pdf");  // Можете расширить для генерации случайных файлов
+        return faker.options().option("resume.DOC", "resume.DOCX", "resume.PDF");  // Можете расширить для генерации случайных файлов
     }
 
     public static String getRandomPhoneNumber() {
