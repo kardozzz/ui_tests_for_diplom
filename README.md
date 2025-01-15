@@ -91,7 +91,8 @@ mtsjob_test
 <img src="images/dashboardsTestOps.png">
 ---
 <a id="telegramBot"></a>
-## <a name="Уведомления в Telegram bot">**Уведомления в Telegram bot**</a>
+
+## Уведомления в Telegram bot
 
 >Для быстрой визуализации отчетности, после выполнения тестов, результат отчета дублируется в Telegram бот:
 <p align="center">
