@@ -3,6 +3,7 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import pages.BrowserNavigation;
 import pages.FindVacancyMtsPage;
 import pages.JobMtsMainPage;
 import pages.VacancyMtsPage;
@@ -15,6 +16,7 @@ import static io.qameta.allure.Allure.step;
 public class JobMtsResponseVacancyTest extends TestBase {
     FindVacancyMtsPage findVacancyMtsPage = new FindVacancyMtsPage();
     VacancyMtsPage vacancyMtsPage = new VacancyMtsPage();
+    BrowserNavigation browserNavigation = new BrowserNavigation();
     JobMtsMainPage jobMtsMainPage = new JobMtsMainPage();
     String firstName = RandomUtils.getRandomFirstName();
     String lastName = RandomUtils.getRandomLastName();
@@ -27,13 +29,11 @@ public class JobMtsResponseVacancyTest extends TestBase {
     @Test
     @DisplayName("Заполняем все поля формы отклика")
     void fillRespondFormAllRow() {
-        step("Открываем главную страницу", () -> {
             jobMtsMainPage.pageOpen();
-        });
         jobMtsMainPage.clickButtonAllVacancy();
         findVacancyMtsPage.inputVacancy()
                 .clickFindVacancy();
-        switchTo().window(1);
+        browserNavigation.moveToTwoWindow();
         vacancyMtsPage.closeCookieBannerIfPresent();
         vacancyMtsPage.scrollToButtonRespond()
                 .setFirstName(firstName)
@@ -50,13 +50,11 @@ public class JobMtsResponseVacancyTest extends TestBase {
     @DisplayName("Все поля пустые.")
     @Test
     void fillRespondFormResumeLink() {
-        step("Открываем главную страницу", () -> {
             jobMtsMainPage.pageOpen();
-        });
         jobMtsMainPage.clickButtonAllVacancy();
         findVacancyMtsPage.inputVacancy()
                 .clickFindVacancy();
-        switchTo().window(1);
+        browserNavigation.moveToTwoWindow();
         vacancyMtsPage.closeCookieBannerIfPresent();
         vacancyMtsPage.scrollToButtonRespond()
                 .clickButtonSendRespond();
@@ -65,13 +63,11 @@ public class JobMtsResponseVacancyTest extends TestBase {
     @DisplayName("Имя и фамилия не заполнены.")
     @Test
     void fillRespondFormNotFirstAndLastName() {
-        step("Открываем главную страницу", () -> {
             jobMtsMainPage.pageOpen();
-        });
         jobMtsMainPage.clickButtonAllVacancy();
         findVacancyMtsPage.inputVacancy()
                 .clickFindVacancy();
-        switchTo().window(1);
+        browserNavigation.moveToTwoWindow();
         vacancyMtsPage.closeCookieBannerIfPresent();
         vacancyMtsPage.scrollToButtonRespond()
                 .setPhoneNumber(phoneNumber)
@@ -86,9 +82,7 @@ public class JobMtsResponseVacancyTest extends TestBase {
     @DisplayName("Не поставлен чек-бокс о персональных данных.")
     @Test
     void fillRespondFormNotCheckBox() {
-        step("Открываем главную страницу", () -> {
             jobMtsMainPage.pageOpen();
-        });
         jobMtsMainPage.clickButtonAllVacancy();
         findVacancyMtsPage.inputVacancy()
                 .clickFindVacancy();
