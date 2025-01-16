@@ -38,7 +38,7 @@
 <a id="tools"></a>
 ## <a name="Jenkins:">**Jenkins**</a>
 
-Тесты запускаются через [Jenkins](https://jenkins.autotests.cloud/job/student_alabzin_testOps_in_jenkins/)
+Тесты запускаются через [Jenkins](https://jenkins.autotests.cloud/job/mtsJob_tests/)
 
 <img src="images/jenkins.png" width="900">
 
