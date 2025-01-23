@@ -73,7 +73,7 @@ public class JobMtsResponseVacancyTest extends TestBase {
     @ParameterizedTest
     @ValueSource(strings = {"Тестирование"})
     void fillRespondFormNotFirstAndLastName(String vacancyName) {
-            jobMtsMainPage.pageOpen();
+        jobMtsMainPage.pageOpen();
         jobMtsMainPage.clickButtonAllVacancy();
         sleep(1000);
         findVacancyMtsPage.inputVacancy(vacancyName)
