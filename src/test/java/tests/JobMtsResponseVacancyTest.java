@@ -1,40 +1,42 @@
 package tests;
 
+import helpers.BrowserHelper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import pages.BrowserNavigation;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import pages.FindVacancyMtsPage;
 import pages.JobMtsMainPage;
 import pages.VacancyMtsPage;
 import utils.RandomUtils;
 
-import static com.codeborne.selenide.Selenide.switchTo;
-import static io.qameta.allure.Allure.step;
+import static com.codeborne.selenide.Selenide.sleep;
 
-@Tag("web")
+@Tag("tests")
 public class JobMtsResponseVacancyTest extends TestBase {
-    FindVacancyMtsPage findVacancyMtsPage = new FindVacancyMtsPage();
-    VacancyMtsPage vacancyMtsPage = new VacancyMtsPage();
-    BrowserNavigation browserNavigation = new BrowserNavigation();
-    JobMtsMainPage jobMtsMainPage = new JobMtsMainPage();
-    String firstName = RandomUtils.getRandomFirstName();
-    String lastName = RandomUtils.getRandomLastName();
-    String phoneNumber = RandomUtils.getRandomPhoneNumber();
-    String email = RandomUtils.getRandomEmail();
-    String city = RandomUtils.getRandomCity();
-    String resumeLink = RandomUtils.getRandomResumeLink();
-    String coverLetter = RandomUtils.getRandomCoverLetter();
+    final FindVacancyMtsPage findVacancyMtsPage = new FindVacancyMtsPage();
+    final VacancyMtsPage vacancyMtsPage = new VacancyMtsPage();
+    final BrowserHelper browserHelper = new BrowserHelper();
+    final JobMtsMainPage jobMtsMainPage = new JobMtsMainPage();
+    final String firstName = RandomUtils.getRandomFirstName();
+    final String lastName = RandomUtils.getRandomLastName();
+    final String phoneNumber = RandomUtils.getRandomPhoneNumber();
+    final String email = RandomUtils.getRandomEmail();
+    final String city = RandomUtils.getRandomCity();
+    final String resumeLink = RandomUtils.getRandomResumeLink();
+    final String coverLetter = RandomUtils.getRandomCoverLetter();
 
-    @Test
-    @DisplayName("Заполняем все поля формы отклика")
-    void fillRespondFormAllRow() {
-            jobMtsMainPage.pageOpen();
+
+    @ParameterizedTest
+    @ValueSource(strings = {"Тестирование", "Разработка", "Поддержка клиентов"})
+    @DisplayName("Заполняем все поля формы отклика для вакансии")
+    void fillRespondFormAllRow(String vacancyName) {
+        jobMtsMainPage.pageOpen();
         jobMtsMainPage.clickButtonAllVacancy();
-        findVacancyMtsPage.inputVacancy()
-                .clickFindVacancy();
-        browserNavigation.moveToTwoWindow();
-        vacancyMtsPage.closeCookieBannerIfPresent();
+        sleep(1000);
+        findVacancyMtsPage.inputVacancy(vacancyName)
+                .clickFindVacancy(vacancyName);
+        browserHelper.secondWindow();
         vacancyMtsPage.scrollToButtonRespond()
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -43,32 +45,40 @@ public class JobMtsResponseVacancyTest extends TestBase {
                 .setCity(city)
                 .linkResume(resumeLink)
                 .setCoverLetter(coverLetter)
-                .setAgreementCheckBox()
-                .checkButtonSendRespond();
+                .closeCookieBannerIfPresent();
+        vacancyMtsPage.clickButtonSendRespond()
+                .verifyFieldsState(true, true, true, true, true, true, true)
+                .assertAgreementCheckBoxSelected(false);
     }
 
-    @DisplayName("Все поля пустые.")
-    @Test
-    void fillRespondFormResumeLink() {
-            jobMtsMainPage.pageOpen();
+    @DisplayName("Все поля пустые кроме телефона.")
+    @ParameterizedTest
+    @ValueSource(strings = {"Тестирование"})
+    void fillRespondFormResumeLink(String vacancyName) {
+        jobMtsMainPage.pageOpen();
         jobMtsMainPage.clickButtonAllVacancy();
-        findVacancyMtsPage.inputVacancy()
-                .clickFindVacancy();
-        browserNavigation.moveToTwoWindow();
-        vacancyMtsPage.closeCookieBannerIfPresent();
+        sleep(1000);
+        findVacancyMtsPage.inputVacancy(vacancyName)
+                .clickFindVacancy(vacancyName);
+        browserHelper.secondWindow();
         vacancyMtsPage.scrollToButtonRespond()
-                .clickButtonSendRespond();
+                .closeCookieBannerIfPresent();
+        vacancyMtsPage.clickButtonSendRespond()
+                .verifyFieldsState(false, false, true, false, false, false, false)
+                .assertAgreementCheckBoxSelected(false);
     }
+
 
     @DisplayName("Имя и фамилия не заполнены.")
-    @Test
-    void fillRespondFormNotFirstAndLastName() {
+    @ParameterizedTest
+    @ValueSource(strings = {"Тестирование"})
+    void fillRespondFormNotFirstAndLastName(String vacancyName) {
             jobMtsMainPage.pageOpen();
         jobMtsMainPage.clickButtonAllVacancy();
-        findVacancyMtsPage.inputVacancy()
-                .clickFindVacancy();
-        browserNavigation.moveToTwoWindow();
-        vacancyMtsPage.closeCookieBannerIfPresent();
+        sleep(1000);
+        findVacancyMtsPage.inputVacancy(vacancyName)
+                .clickFindVacancy(vacancyName);
+        browserHelper.secondWindow();
         vacancyMtsPage.scrollToButtonRespond()
                 .setPhoneNumber(phoneNumber)
                 .setEmail(email)
@@ -76,18 +86,22 @@ public class JobMtsResponseVacancyTest extends TestBase {
                 .linkResume(resumeLink)
                 .setCoverLetter(coverLetter)
                 .setAgreementCheckBox()
-                .clickButtonSendRespond();
+                .closeCookieBannerIfPresent();
+        vacancyMtsPage.clickButtonSendRespond()
+                .verifyFieldsState(false, false, true, true, true, true, true)
+                .assertAgreementCheckBoxSelected(true);
     }
 
     @DisplayName("Не поставлен чек-бокс о персональных данных.")
-    @Test
-    void fillRespondFormNotCheckBox() {
-            jobMtsMainPage.pageOpen();
+    @ParameterizedTest
+    @ValueSource(strings = {"Тестирование"})
+    void fillRespondFormNotCheckBox(String vacancyName) {
+        jobMtsMainPage.pageOpen();
         jobMtsMainPage.clickButtonAllVacancy();
-        findVacancyMtsPage.inputVacancy()
-                .clickFindVacancy();
-        switchTo().window(1);
-        vacancyMtsPage.closeCookieBannerIfPresent();
+        sleep(1000);
+        findVacancyMtsPage.inputVacancy(vacancyName)
+                .clickFindVacancy(vacancyName);
+        browserHelper.secondWindow();
         vacancyMtsPage.scrollToButtonRespond()
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -96,7 +110,11 @@ public class JobMtsResponseVacancyTest extends TestBase {
                 .setCity(city)
                 .linkResume(resumeLink)
                 .setCoverLetter(coverLetter)
-                .clickButtonSendRespond();
+                .closeCookieBannerIfPresent();
+        vacancyMtsPage.clickButtonSendRespond()
+                .verifyFieldsState(true, true, true, true, true, true, true)
+                .assertAgreementCheckBoxSelected(false);
+
     }
 }
 

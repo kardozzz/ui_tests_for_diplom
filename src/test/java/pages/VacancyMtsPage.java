@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -7,6 +8,7 @@ import static com.codeborne.selenide.Condition.clickable;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VacancyMtsPage {
     final SelenideElement buttonRespond = $x("//button/span[2]"),
@@ -106,7 +108,45 @@ public class VacancyMtsPage {
 
     @Step("Нажимаем подтвердить на сообщение о cookies")
     public void closeCookieBannerIfPresent() {
-        $("#app > div.cookies-agreement-alert.container > div > div.col-mob-4.col-xs-offset-1.col-xs-2 > button").click();
+        // Ищем баннер и проверяем, что он существует
+        SelenideElement cookieBanner = $(".cookies-agreement-alert");
+
+        // Если баннер существует, пытаемся закрыть его
+        if (cookieBanner.exists()) {
+            // Находим кнопку "Принимаю" и ждем, пока она станет видимой и доступной для клика
+            SelenideElement acceptButton = cookieBanner.$(".mts-button__text");
+            acceptButton.shouldBe(Condition.visible).click();  // Ожидаем, пока кнопка станет видимой
+        }
+    }
+
+    @Step("Проверяем заполненность полей формы")
+    public VacancyMtsPage verifyFieldsState(
+            boolean isFirstNameFilled,
+            boolean isLastNameFilled,
+            boolean isPhoneFilled,
+            boolean isEmailFilled,
+            boolean isCityFilled,
+            boolean isResumeLinkFilled,
+            boolean isCoverLetterFilled) {
+
+        // Проверяем каждое поле по флагу
+        assertEquals(isFirstNameFilled, !inputFirstName.getValue().isEmpty(), "Поле 'Имя' не соответствует ожиданию");
+        assertEquals(isLastNameFilled, !inputLastName.getValue().isEmpty(), "Поле 'Фамилия' не соответствует ожиданию");
+        assertEquals(isPhoneFilled, !inputPhone.getValue().isEmpty(), "Поле 'Телефон' не соответствует ожиданию");
+        assertEquals(isEmailFilled, !inputEmail.getValue().isEmpty(), "Поле 'Email' не соответствует ожиданию");
+        assertEquals(isCityFilled, !inputCity.getValue().isEmpty(), "Поле 'Город' не соответствует ожиданию");
+        assertEquals(isResumeLinkFilled, !inputResumeLink.getValue().isEmpty(), "Поле 'Ссылка на резюме' не соответствует ожиданию");
+        assertEquals(isCoverLetterFilled, !inputCoverLetter.getValue().isEmpty(), "Поле 'Сопроводительное письмо' не соответствует ожиданию");
+
+        return this;
+    }
+
+    @Step("Проверяем, что чек-бокс о персональных данных установлен")
+    public VacancyMtsPage assertAgreementCheckBoxSelected(boolean expectedState) {
+        boolean isCheckBoxSelected = agreementCheckBox.isSelected();
+        assertEquals(expectedState, isCheckBoxSelected,
+                "Чек-бокс о персональных данных не в ожидаемом состоянии.");
+        return this;
     }
 }
 

@@ -4,18 +4,17 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.clickable;
+import static com.codeborne.selenide.Condition.href;
 import static com.codeborne.selenide.Selenide.*;
 
 public class JobMtsMainPage {
-    final SelenideElement buttonVacancy = $(".h-button__text"),
-            linkWorkInIt = $$(".header__menu-item").findBy(Condition.text("Работа в IT")),
-            linkAllVacancies = $$(".header__menu-item").findBy(Condition.text("Все вакансии")),
+    final SelenideElement
             clickAllVacancies = $$(".header__menu-item").findBy(Condition.text("Все вакансии")),
-            linkProgram = $$(".header__menu-item").findBy(Condition.text("Стажировки")),
-            buttonSearch = $$(".h-button").find(Condition.text("Найти")),
-            selectHabrLink = $$(".swiper-wrapper").find(Condition.text("Пишем статьи о разработке")),
-            scrollToSearchResult = $(".social-slider__item-text");
+            habrSlider = $$(".social-slider__item").findBy(Condition.text("Хабр")),
+            vcSlider = $$(".social-slider__item").findBy(Condition.text("VC")),
+            kodSlider = $$(".social-slider__item").findBy(Condition.text("Код Дурова")),
+            scrollToSearchResult = $(".social-slider__item-text"),
+            telegramSlider = $$(".social-slider__item").findBy(Condition.text("Это МТС"));
 
     @Step("Открываем главную страницу")
     public JobMtsMainPage pageOpen() {
@@ -23,23 +22,6 @@ public class JobMtsMainPage {
         return this;
     }
 
-    @Step("Проверяем кликабельность кнопки Работа в IT")
-    public JobMtsMainPage checkButtonWorkInIt() {
-        linkWorkInIt.shouldBe(clickable);
-        return this;
-    }
-
-    @Step("Проверяем кликабельность кнопки Стажировки")
-    public JobMtsMainPage checkButtonProgram() {
-        linkProgram.shouldBe(clickable);
-        return this;
-    }
-
-    @Step("Проверяем кликабельность кнопки Все вакансии")
-    public JobMtsMainPage checkButtonAllVacancy() {
-        linkAllVacancies.shouldBe(clickable);
-        return this;
-    }
 
     @Step("Нажимаем на кнопку Все вакансии")
     public JobMtsMainPage clickButtonAllVacancy() {
@@ -47,15 +29,26 @@ public class JobMtsMainPage {
         return this;
     }
 
-    @Step("Проверяем кликабельность кнопки Найти")
-    public JobMtsMainPage checkButtonSearch() {
-        buttonSearch.shouldBe(clickable);
+
+    @Step("Проверяем переход из карусели соц.сетей на профиль Habr")
+    public JobMtsMainPage clickOnHabrSlider() {
+        habrSlider.shouldHave(href("https://habr.com/ru/companies/ru_mts"));
+        habrSlider.click();
         return this;
     }
 
-    @Step("Проверяем кликабельность ссылка на Habr")
-    public JobMtsMainPage checkSelectHabr() {
-        selectHabrLink.shouldBe(clickable);
+    @Step("Проверяем переход из карусели соц.сетей на профиль Vc.ru")
+    public JobMtsMainPage clickOnVcSlider() {
+        vcSlider.shouldHave(href("https://vc.ru/mts"));
+        vcSlider.click();
+        return this;
+    }
+
+
+    @Step("Проверяем переход из карусели соц.сетей на профиль Kod.ru")
+    public JobMtsMainPage clickOnKodSlider() {
+        kodSlider.shouldHave(href("https://kod.ru/author/mts"));
+        kodSlider.click();
         return this;
     }
 
@@ -65,5 +58,10 @@ public class JobMtsMainPage {
         return this;
     }
 
-
+    @Step("Проверяем переход из карусели соц.сетей в Telegram канал")
+    public JobMtsMainPage clickOnTgSlider() {
+        telegramSlider.shouldHave(href("https://t.me/it_is_mts"));
+        telegramSlider.click();
+        return this;
+    }
 }
