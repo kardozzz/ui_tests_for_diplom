@@ -2,12 +2,13 @@ package tests;
 
 import helpers.BrowserHelper;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-
+@Tag("Web")
 public class JobMtsSocialSliderTests extends TestBase {
     JobMtsMainPage jobMtsMainPage = new JobMtsMainPage();
     BrowserHelper browserHelper = new BrowserHelper();

@@ -38,7 +38,7 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.register("mtsjob_test", Test) {
     useJUnitPlatform {
-        includeTags("")
+        includeTags("Web")
         systemProperties System.getProperties()
     }
     testLogging {
